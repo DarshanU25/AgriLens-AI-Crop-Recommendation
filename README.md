@@ -40,7 +40,6 @@ source venv/bin/activate
 Because the code is cleanly separated, you must first navigate into the `app/` folder before starting the server. Run these commands:
 
 ```bash
-venv\Scripts\activate
 cd app
 uvicorn app:app --reload
 ```
