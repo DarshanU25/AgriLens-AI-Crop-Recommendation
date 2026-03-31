@@ -40,6 +40,7 @@ source venv/bin/activate
 Because the code is cleanly separated, you must first navigate into the `app/` folder before starting the server. Run these commands:
 
 ```bash
+venv\Scripts\activate
 cd app
 uvicorn app:app --reload
 ```
@@ -47,6 +48,23 @@ uvicorn app:app --reload
 
 ### 4. Launch the App!
 Simply open the `app/index.html` file in your preferred web browser (Chrome, Edge, Firefox). The frontend will automatically route prediction requests to your locally running backend!
+
+## 📸 Screenshots & How It Works
+
+### 1. The Smart Dashboard
+![Dashboard Preview](screenshots/dashboard.png)
+
+**How it works:** The main dashboard displays live telemetry from your field sensors. When you enter your soil details on the right-hand panel and click "Find Best Crop", the frontend sends a secure request to the local FastAPI Python backend. The backend runs the localized data through the trained predictive machine learning model and instantly returns the best crop yield recommendations alongside AI confidence scores!
+
+### 2. Multi-Language Accessibility
+![Language Switcher](screenshots/language.png)
+
+**How it works:** We built a custom vanilla JavaScript translation engine. When a farmer selects Hindi or Marathi from the dropdown, the system instantly loops through the interface and swaps out complex English terminology with localized, farmer-friendly dialects—without ever needing a page refresh.
+
+### 3. Dedicated Articles & Insights
+![Farming Tips SPA](screenshots/insights.png)
+
+**How it works:** The platform acts as a lightning-fast Single Page Application (SPA). Clicking on the "Farming Tips" navigation link seamlessly hides the dashboard and smoothly animates in the insights view using JavaScript routing logic.
 
 ---
 
