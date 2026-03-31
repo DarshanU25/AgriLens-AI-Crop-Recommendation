@@ -1,0 +1,182 @@
+{
+    "Rice": {
+      "best_fertilizers": ["Urea", "DAP", "Potash"],
+      "cultivation_time": "4-5 months",
+      "seed_cost_per_acre": "₹1500-2500",
+      "avg_yield_per_acre": "20-25 quintals"
+    },
+    "Wheat": {
+      "best_fertilizers": ["Urea", "NPK 10-26-26"],
+      "cultivation_time": "4 months",
+      "seed_cost_per_acre": "₹1200-2000",
+      "avg_yield_per_acre": "18-22 quintals"
+    },
+    "Maize": {
+      "best_fertilizers": ["Urea", "DAP"],
+      "cultivation_time": "3-4 months",
+      "seed_cost_per_acre": "₹1800-3000",
+      "avg_yield_per_acre": "25-30 quintals"
+    },
+    "Barley": {
+      "best_fertilizers": ["NPK 12-32-16"],
+      "cultivation_time": "3-4 months",
+      "seed_cost_per_acre": "₹1000-1800",
+      "avg_yield_per_acre": "15-20 quintals"
+    },
+    "Sorghum": {
+      "best_fertilizers": ["Urea", "NPK 20-20-20"],
+      "cultivation_time": "4 months",
+      "seed_cost_per_acre": "₹1200-2000",
+      "avg_yield_per_acre": "12-18 quintals"
+    },
+    "Millet": {
+      "best_fertilizers": ["NPK 15-15-15"],
+      "cultivation_time": "3-4 months",
+      "seed_cost_per_acre": "₹1000-1500",
+      "avg_yield_per_acre": "10-15 quintals"
+    },
+    "Oats": {
+      "best_fertilizers": ["Urea", "DAP"],
+      "cultivation_time": "4 months",
+      "seed_cost_per_acre": "₹1200-2000",
+      "avg_yield_per_acre": "15-20 quintals"
+    },
+    "Cotton": {
+      "best_fertilizers": ["NPK 20-20-20", "Urea"],
+      "cultivation_time": "5-6 months",
+      "seed_cost_per_acre": "₹3500-4500",
+      "avg_yield_per_acre": "8-12 quintals"
+    },
+    "Sugarcane": {
+      "best_fertilizers": ["Urea", "Potash"],
+      "cultivation_time": "10-12 months",
+      "seed_cost_per_acre": "₹4000-6000",
+      "avg_yield_per_acre": "350-400 quintals"
+    },
+    "Groundnut": {
+      "best_fertilizers": ["Gypsum", "NPK 10-26-26"],
+      "cultivation_time": "3-4 months",
+      "seed_cost_per_acre": "₹2500-3500",
+      "avg_yield_per_acre": "10-15 quintals"
+    },
+    "Soybean": {
+      "best_fertilizers": ["Rhizobium culture", "DAP"],
+      "cultivation_time": "3-4 months",
+      "seed_cost_per_acre": "₹2000-3000",
+      "avg_yield_per_acre": "12-18 quintals"
+    },
+    "Mustard": {
+      "best_fertilizers": ["NPK 12-32-16"],
+      "cultivation_time": "3-4 months",
+      "seed_cost_per_acre": "₹1200-2000",
+      "avg_yield_per_acre": "8-12 quintals"
+    },
+    "Sunflower": {
+      "best_fertilizers": ["NPK 20-20-20"],
+      "cultivation_time": "3 months",
+      "seed_cost_per_acre": "₹1800-2500",
+      "avg_yield_per_acre": "6-10 quintals"
+    },
+    "Potato": {
+      "best_fertilizers": ["NPK 14-35-14"],
+      "cultivation_time": "3 months",
+      "seed_cost_per_acre": "₹8000-12000",
+      "avg_yield_per_acre": "80-100 quintals"
+    },
+    "Tomato": {
+      "best_fertilizers": ["Vermicompost", "NPK 19-19-19"],
+      "cultivation_time": "2-3 months",
+      "seed_cost_per_acre": "₹2500-4000",
+      "avg_yield_per_acre": "150-250 quintals"
+    },
+    "Onion": {
+      "best_fertilizers": ["NPK 10-26-26"],
+      "cultivation_time": "3-4 months",
+      "seed_cost_per_acre": "₹3000-4500",
+      "avg_yield_per_acre": "100-150 quintals"
+    },
+    "Garlic": {
+      "best_fertilizers": ["Vermicompost", "Urea"],
+      "cultivation_time": "4-5 months",
+      "seed_cost_per_acre": "₹7000-10000",
+      "avg_yield_per_acre": "40-60 quintals"
+    },
+    "Cabbage": {
+      "best_fertilizers": ["NPK 20-20-20"],
+      "cultivation_time": "3 months",
+      "seed_cost_per_acre": "₹2000-3000",
+      "avg_yield_per_acre": "100-120 quintals"
+    },
+    "Cauliflower": {
+      "best_fertilizers": ["DAP", "Urea"],
+      "cultivation_time": "3-4 months",
+      "seed_cost_per_acre": "₹2500-3500",
+      "avg_yield_per_acre": "80-120 quintals"
+    },
+    "Carrot": {
+      "best_fertilizers": ["Organic manure", "NPK 10-26-26"],
+      "cultivation_time": "3 months",
+      "seed_cost_per_acre": "₹1500-2500",
+      "avg_yield_per_acre": "80-100 quintals"
+    },
+    "Peas": {
+      "best_fertilizers": ["Rhizobium culture", "DAP"],
+      "cultivation_time": "3 months",
+      "seed_cost_per_acre": "₹1500-2500",
+      "avg_yield_per_acre": "15-20 quintals"
+    },
+    "Chickpea": {
+      "best_fertilizers": ["NPK 12-32-16"],
+      "cultivation_time": "4 months",
+      "seed_cost_per_acre": "₹1200-2000",
+      "avg_yield_per_acre": "10-15 quintals"
+    },
+    "Lentil": {
+      "best_fertilizers": ["DAP", "Urea"],
+      "cultivation_time": "3-4 months",
+      "seed_cost_per_acre": "₹1200-2000",
+      "avg_yield_per_acre": "8-12 quintals"
+    },
+    "Turmeric": {
+      "best_fertilizers": ["Organic manure", "NPK 20-20-20"],
+      "cultivation_time": "7-9 months",
+      "seed_cost_per_acre": "₹6000-9000",
+      "avg_yield_per_acre": "20-25 quintals"
+    },
+    "Ginger": {
+      "best_fertilizers": ["Vermicompost", "NPK 15-15-15"],
+      "cultivation_time": "6-8 months",
+      "seed_cost_per_acre": "₹7000-10000",
+      "avg_yield_per_acre": "50-70 quintals"
+    },
+    "Banana": {
+      "best_fertilizers": ["NPK 20-20-20", "Organic manure"],
+      "cultivation_time": "10-12 months",
+      "seed_cost_per_acre": "₹20000-30000",
+      "avg_yield_per_acre": "25-30 tons"
+    },
+    "Mango": {
+      "best_fertilizers": ["Farmyard manure", "NPK 10-26-26"],
+      "cultivation_time": "3-5 years",
+      "seed_cost_per_acre": "₹15000-25000",
+      "avg_yield_per_acre": "4-6 tons"
+    },
+    "Grapes": {
+      "best_fertilizers": ["NPK 19-19-19"],
+      "cultivation_time": "2-3 years",
+      "seed_cost_per_acre": "₹30000-40000",
+      "avg_yield_per_acre": "8-10 tons"
+    },
+    "Coconut": {
+      "best_fertilizers": ["Organic manure", "Potash"],
+      "cultivation_time": "5-6 years",
+      "seed_cost_per_acre": "₹25000-35000",
+      "avg_yield_per_acre": "8000-10000 nuts"
+    },
+    "Coffee": {
+      "best_fertilizers": ["NPK 17-17-17"],
+      "cultivation_time": "3-4 years",
+      "seed_cost_per_acre": "₹20000-30000",
+      "avg_yield_per_acre": "600-800 kg"
+    }
+  }

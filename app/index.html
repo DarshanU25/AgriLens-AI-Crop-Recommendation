@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgriLens AI - Smart Crop Recommendation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="#" class="logo" onclick="navigate('dashboard', this); return false;">
+            <i class="ph ph-plant"></i>
+            AgriLens AI
+        </a>
+        <div class="nav-links">
+            <a href="#" onclick="navigate('dashboard', this); return false;" class="nav-item active"><span data-i18n="nav-home">Home</span></a>
+            <a href="#" onclick="navigate('insights', this); return false;" class="nav-item"><span data-i18n="nav-tips">Farming Tips</span></a>
+            <a href="#" onclick="navigate('sensors', this); return false;" class="nav-item"><span data-i18n="nav-sensors">Field Sensors</span></a>
+            <a href="#" onclick="navigate('analytics', this); return false;" class="nav-item"><span data-i18n="nav-records">Yield Records</span></a>
+        </div>
+        <div class="lang-switcher">
+            <select id="languageSelect" onchange="changeLanguage(this.value)" class="lang-btn">
+                <option value="en">English</option>
+                <option value="hi">हिंदी (Hindi)</option>
+                <option value="mr">मराठी (Marathi)</option>
+            </select>
+        </div>
+    </nav>
+
+    <header id="main-header">
+        <h1 id="page-title"><span data-i18n="title-main">Smart Farming Assistant</span></h1>
+        <p class="subtitle" id="page-subtitle"><span data-i18n="subtitle-main">Find the best crops for your exact soil and weather conditions.</span></p>
+    </header>
+
+    <!-- SECTION: DASHBOARD -->
+    <div id="section-dashboard" class="page-section" style="display: block;">
+        <div class="dashboard-grid">
+            
+            <!-- Main Content Left -->
+            <div class="left-col" style="display: flex; flex-direction: column; gap: 32px;">
+                
+                <!-- Real-time Telemetry -->
+                <div class="glass-panel">
+                    <h2 class="section-title"><i class="ph ph-activity"></i> <span data-i18n="title-telemetry">Live Field View</span></h2>
+                    <div class="sensors-grid">
+                        <div class="sensor-card">
+                            <div class="sensor-header">
+                                <span data-i18n="val-airtemp">Air Temp</span>
+                                <i class="ph ph-thermometer"></i>
+                            </div>
+                            <div class="sensor-value" id="airTemp">-- <span>°C</span></div>
+                        </div>
+                        <div class="sensor-card">
+                            <div class="sensor-header">
+                                <span data-i18n="val-humidity">Humidity</span>
+                                <i class="ph ph-drop"></i>
+                            </div>
+                            <div class="sensor-value" id="humidity">-- <span>%</span></div>
+                        </div>
+                        <div class="sensor-card">
+                            <div class="sensor-header">
+                                <span data-i18n="val-soiltemp">Soil Temp</span>
+                                <i class="ph ph-chart-polar"></i>
+                            </div>
+                            <div class="sensor-value" id="soilTemp">-- <span>°C</span></div>
+                        </div>
+                        <div class="sensor-card">
+                            <div class="sensor-header">
+                                <span data-i18n="val-moisture">Soil Water</span>
+                                <i class="ph ph-waves"></i>
+                            </div>
+                            <div class="sensor-value" id="soilMoisture">-- <span>%</span></div>
+                        </div>
+                        <div class="sensor-card">
+                            <div class="sensor-header">
+                                <span>CO2</span>
+                                <i class="ph ph-cloud"></i>
+                            </div>
+                            <div class="sensor-value" id="co2">-- <span>PPM</span></div>
+                        </div>
+                        <div class="sensor-card">
+                            <div class="sensor-header">
+                                <span>O2</span>
+                                <i class="ph ph-wind"></i>
+                            </div>
+                            <div class="sensor-value" id="o2">-- <span>%</span></div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 24px;">
+                        <button class="btn btn-secondary" onclick="getPlantRecommendations()">
+                            <i class="ph ph-leaf"></i> <span data-i18n="btn-quick">Quick Check</span>
+                        </button>
+                        <div id="quick-recs" style="margin-top: 16px;"></div>
+                    </div>
+                </div>
+
+                <!-- AI Analysis -->
+                <div class="glass-panel" style="flex-grow: 1;">
+                    <h2 class="section-title"><i class="ph ph-brain"></i> <span data-i18n="title-report">Crop Recommendations</span></h2>
+                    <div id="recommendations">
+                        <div style="text-align: center; color: var(--text-muted); padding: 40px 0;">
+                            <i class="ph ph-flask" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.4;"></i>
+                            <p><span data-i18n="txt-report-empty">Select your soil and weather below to get farming advice.</span></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Sidebar - Parameters -->
+            <div class="glass-panel">
+                <h2 class="section-title"><i class="ph ph-sliders"></i> <span data-i18n="title-params">Your Field Details</span></h2>
+                
+                <div class="input-group">
+                    <label><span data-i18n="lbl-soil">Soil Type</span></label>
+                    <div class="custom-select">
+                        <select id="soilType">
+                            <option value="" id="opt-soil">Select soil...</option>
+                            <option value="Sandy">Sandy</option>
+                            <option value="Clay">Clay</option>
+                            <option value="Loamy">Loamy</option>
+                            <option value="Peaty">Peaty</option>
+                            <option value="Silty">Silty</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label><span data-i18n="lbl-region">Your Region</span></label>
+                    <div class="custom-select">
+                        <select id="region">
+                            <option value="" id="opt-region">Select climate...</option>
+                            <option value="Tropical">Tropical</option>
+                            <option value="Temperate">Temperate</option>
+                            <option value="Arid">Arid</option>
+                            <option value="Subtropical">Subtropical</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label><span data-i18n="lbl-weather">Weather</span></label>
+                    <div class="custom-select">
+                        <select id="environment">
+                            <option value="" id="opt-weather">Select condition...</option>
+                            <option value="Hot">Hot</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="Cold">Cold</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="getCropRecommendations()" style="margin-top: 32px;">
+                    <i class="ph ph-target"></i> <span data-i18n="btn-run">Find Best Crop</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SECTION: INSIGHTS & BLOGS -->
+    <div id="section-insights" class="page-section">
+        <div class="glass-panel">
+            <h2 class="section-title"><i class="ph ph-books"></i> <span data-i18n="title-articles">Simple Farming Guides</span></h2>
+            <p class="subtitle" style="margin-bottom: 24px;"><span data-i18n="sub-articles">Learn modern farming techniques in simple words to increase your crop yield.</span></p>
+
+            <div class="blog-grid" id="articles-list">
+                <!-- Javascript will inject generic articles here based on language -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: ARTICLE DETAIL -->
+    <div id="section-article-detail" class="page-section">
+        <div class="glass-panel" style="max-width: 900px; margin: 0 auto; min-height: 60vh;">
+            <a href="#" class="back-btn" onclick="navigate('insights', document.querySelectorAll('.nav-links a')[1]); return false;">
+                <i class="ph ph-arrow-left"></i> <span data-i18n="btn-back">Go Back</span>
+            </a>
+            <div id="article-content-container">
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: SENSORS -->
+    <div id="section-sensors" class="page-section">
+        <div class="glass-panel">
+            <h2 class="section-title"><i class="ph ph-broadcast"></i> <span data-i18n="title-nodes">Equipment Status</span></h2>
+            <p class="subtitle" style="margin-bottom: 24px;"><span data-i18n="sub-nodes">Check if your field machines and sensors are working.</span></p>
+            
+            <div class="sensors-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+                <div class="sensor-card sensor-detail-card" style="border-left-color: #3b82f6;">
+                    <div class="sensor-header">
+                        <span>Machine 1 (North Field)</span>
+                        <i class="ph ph-thermometer" style="color:#3b82f6"></i>
+                    </div>
+                    <div class="sensor-value"><span id="sensorPageAirTemp">21.4</span> <span>°C</span></div>
+                    <span class="sensor-detail-status"><i class="ph ph-check-circle"></i> Online</span>
+                </div>
+                
+                <div class="sensor-card sensor-detail-card" style="border-left-color: #22c55e;">
+                    <div class="sensor-header">
+                        <span>Machine 2 (South Field)</span>
+                        <i class="ph ph-waves" style="color:#22c55e"></i>
+                    </div>
+                    <div class="sensor-value"><span id="sensorPageMoisture">34</span> <span>%</span></div>
+                    <span class="sensor-detail-status"><i class="ph ph-check-circle"></i> Online</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: ANALYTICS -->
+    <div id="section-analytics" class="page-section">
+        <div class="glass-panel">
+            <h2 class="section-title"><i class="ph ph-chart-line-up"></i> <span data-i18n="title-history">Past Harvests</span></h2>
+            <p class="subtitle" style="margin-bottom: 24px;"><span data-i18n="sub-history">Look back at what you grew in the past.</span></p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px;">
+                <div style="padding: 24px; border: 1px solid var(--border); border-radius: 16px; background: #ffffff;">
+                    <h3 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 8px;">Soil Health Status</h3>
+                    <div class="analytics-chart-mock">
+                        <i class="ph ph-chart-bar" style="font-size: 3rem; color: #3b82f6; opacity: 0.5;"></i>
+                    </div>
+                </div>
+                <div style="padding: 24px; border: 1px solid var(--border); border-radius: 16px; background: #ffffff;">
+                    <h3 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 8px;">Previous Yield Quality</h3>
+                    <div class="analytics-chart-mock">
+                        <i class="ph ph-chart-scatter" style="font-size: 3rem; color: #22c55e; opacity: 0.5;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Area -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="#" class="logo" style="margin-bottom: 20px;">
+                    <i class="ph ph-plant"></i> AgriLens AI
+                </a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="ph ph-phone"></i> +1 (555) 0192-AGRI</p>
+                <p><i class="ph ph-map-pin"></i> 100 Innovation Drive, Vasant Kunj</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
